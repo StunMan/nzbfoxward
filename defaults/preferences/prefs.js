@@ -1,5 +1,5 @@
 pref("extensions.sabnzbfox.enabled", true);
-pref("extensions.sabnzbfox.action", "target"); // target or api
+pref("extensions.sabnzbfox.action", "target"); // target, api or nzbget
 pref("extensions.sabnzbfox.target", "");
 pref("extensions.sabnzbfox.host", "localhost");
 pref("extensions.sabnzbfox.port", 8080);

@@ -1,6 +1,6 @@
 Components.utils.import("resource://sabnzbdfox/nzbCatcher.js"); 
 Components.utils.import("resource://sabnzbdfox/sabnzbBridge.js"); 
-
+Components.utils.import("resource://sabnzbdfox/nzbgetBridge.js"); 
 
 var sabnzbfox = {};
 
@@ -46,7 +46,9 @@ sabnzbfox.readPref = function () {
   var enabled = this.prefs.getBoolPref("enabled");
   document.getElementById("sabnzbfox-status").setAttribute("off",enabled?"false":"true");
   document.getElementById("sabnzbfox-toggle").setAttribute("checked",enabled?"true":"false");
-  document.getElementById("sabnzb-viewtarget").hidden=!this.prefs.getCharPref("target");
+  document.getElementById("sabnzb-viewtarget").hidden=(this.prefs.getCharPref("action") != "target");
+  document.getElementById("sabnzb-viewurl").hidden=(this.prefs.getCharPref("action") != "api");
+  document.getElementById("nzbget-viewurl").hidden=(this.prefs.getCharPref("action") != "nzbget");
   if (!enabled)
     this.statusBarLabel.value = "";
 }
@@ -81,6 +83,10 @@ sabnzbfox.viewTarget = function () {
 
 sabnzbfox.viewSabnzb = function () {
   gBrowser.selectedTab = gBrowser.addTab(sabnzbBridge.getSabnzbUrl()+"queue/");
+}
+
+sabnzbfox.viewNzbGet = function () {
+  gBrowser.selectedTab = gBrowser.addTab(nzbgetBridge.getNzbGetUrl());
 }
 
 sabnzbfox.blink = function () {

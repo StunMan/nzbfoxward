@@ -2,6 +2,7 @@ var EXPORTED_SYMBOLS = ["nzbCatcher"];
 
 Components.utils.import("resource://sabnzbdfox/contentTypeObserver.js"); 
 Components.utils.import("resource://sabnzbdfox/sabnzbBridge.js"); 
+Components.utils.import("resource://sabnzbdfox/nzbgetBridge.js"); 
 
 var nzbCatcher = {};
 
@@ -83,6 +84,23 @@ nzbCatcher.getRequestListener = function (requestInfo) {
       },
       onStopRequest : function (request, context, statusCode) {
         sabnzbBridge.sendToSabnzb(fileName, this.data);
+        this.data=null;
+        nzbCatcher._onFileDownloaded(null);
+      },
+      onDataAvailable : function (request, context, inputStream, offset, count) {
+        var sstream = Components.classes['@mozilla.org/scriptableinputstream;1'].createInstance (Components.interfaces.nsIScriptableInputStream);
+        sstream.init(inputStream);
+        this.data += sstream.read(count);
+      }
+    };
+  } else if(action=="nzbget" && nzbgetBridge.isEnabled()) {
+    // Simple listener if we don't need to save to a file
+    return {
+      data : "",
+      onStartRequest : function (request, context) {
+      },
+      onStopRequest : function (request, context, statusCode) {
+        nzbgetBridge.sendToNzbGet(fileName, this.data);
         this.data=null;
         nzbCatcher._onFileDownloaded(null);
       },

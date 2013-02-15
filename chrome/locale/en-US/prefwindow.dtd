@@ -3,10 +3,12 @@
 <!ENTITY enabledPref.label "enabled (catch nzb and retrieve jobs count)">
 <!ENTITY action.label "What do we do with NZBs files ?">
 <!ENTITY targetPref.label "Move them to a directory">
+<!ENTITY nzbgetPref.label "Send them directly to nzbget via JSON API">
+<!ENTITY nzbgetPref.notice "Don't forget to set login-data below!">
 <!ENTITY apiPref.label "Send them directly to sabnzbd via web API">
 <!ENTITY apiPref.notice "Don't forget to set API key below!">
 <!ENTITY targetPref.select "Select">
-<!ENTITY serverInfo.label "Sabnzbd server info :">
+<!ENTITY serverInfo.label "Server info :">
 <!ENTITY hostPref.label "IP/Host :">
 <!ENTITY portPref.label "Port :">
 <!ENTITY usernamePref.label "Username :">

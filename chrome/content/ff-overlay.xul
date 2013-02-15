@@ -25,8 +25,13 @@
             <menuitem label="Options" 
                       oncommand="window.openDialog('chrome://sabnzbdfox/content/options.xul', '_new', 'chrome');"
                       tooltiptext="" />
-            <menuitem label="Open sabnzbd webpage" 
+            <menuitem id="sabnzb-viewurl"
+                      label="Open sabnzbd webpage" 
                       oncommand="sabnzbfox.viewSabnzb()"
+                      tooltiptext="" />
+            <menuitem id="nzbget-viewurl"
+                      label="Open nzbget webpage"
+                      oncommand="sabnzbfox.viewNzbGet()"
                       tooltiptext="" />
       </menupopup>
     </statusbarpanel>
