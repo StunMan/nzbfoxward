@@ -84,7 +84,7 @@ sabnzbBridge._readPref = function () {
 }
 
 sabnzbBridge.isEnabled = function () {
-  return this.prefs.getBoolPref("enabled") && this.prefs.getCharPref("apikey");
+  return this.prefs.getBoolPref("enabled") && this.prefs.getCharPref("action") == "api";
 }
 
 var obsService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
